@@ -3,6 +3,7 @@ import { findAll } from 'highlight-words-core'
 import React, { PropTypes } from 'react'
 
 Highlighter.propTypes = {
+  inactiveClassName: PropTypes.string,
   activeClassName: PropTypes.string,
   activeIndex: PropTypes.string,
   autoEscape: PropTypes.bool,
@@ -19,6 +20,7 @@ Highlighter.propTypes = {
  * This function returns an array of strings and <span>s (wrapping highlighted words).
  */
 export default function Highlighter ({
+  inactiveClassName = '',
   activeClassName = '',
   activeIndex = -1,
   autoEscape,
@@ -59,7 +61,7 @@ export default function Highlighter ({
           )
         } else {
           return (
-            <span key={index}>{text}</span>
+            <span key={index} className={inactiveClassName}>{text}</span>
           )
         }
       })}
